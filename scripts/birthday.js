@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const columnIndex = currentBalloonCount % balloonsPerRow;
 
       const x = columnIndex * balloonWidth;
-      const y = greetingHeight + rowIndex * balloonWidth + 20 - 30;
+      const y = Math.random() * (window.innerHeight * 0.1) + greetingEl.offsetHeight + 60;
 
       imageEl.style.left = `${x}px`;
       imageEl.style.top = `${y}px`;
