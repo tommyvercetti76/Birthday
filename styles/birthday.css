@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: black;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+  
+  #greeting {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #0d6efd, 0 0 25px #0d6efd, 0 0 30px #0d6efd, 0 0 35px #0d6efd;
+    transition: opacity 0.3s;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    justify-content: center;
+  }
+  
+  button {
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .balloon {
+    position: absolute;
+    width: 60px;
+    opacity: 0;
+    transition: opacity 1s, transform 1s;
+    transform: translateY(4px);
+    pointer-events: none;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    #greeting {
+      font-size: 1.5rem;
+    }
+  
+    button {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  
+    .balloon {
+      width: 40px;
+    }
+  }
+  
