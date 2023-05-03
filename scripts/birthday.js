@@ -59,29 +59,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function displayGreeting() {
     if (uniqueGreetings.length === 0) return;
-
+  
     const randomGreeting = uniqueGreetings.pop();
     greetingEl.style.opacity = 0;
     setTimeout(() => {
       greetingEl.innerHTML = randomGreeting;
       greetingEl.style.opacity = 1;
     }, 300);
-
+  
     let color;
     do {
       color = Object.keys(colorCounts)[Math.floor(Math.random() * 3)];
     } while (colorCounts[color] >= 10);
-
+  
     colorCounts[color]++;
     const balloonImage = `./images/${color}_balloon.png`;
-
+  
     const imageEl = document.createElement('img');
     imageEl.src = balloonImage;
     imageEl.classList.add('balloon');
     imageEl.style.opacity = 0;
-
+  
     const currentBalloonCount = imagesContainer.childElementCount;
-
+  
     if (currentBalloonCount < 30) {
       const screenWidth = window.innerWidth;
       const greetingHeight = greetingEl.getBoundingClientRect().height;
@@ -90,26 +90,26 @@ document.addEventListener('DOMContentLoaded', function () {
       const balloonsPerRow = Math.floor(screenWidth / balloonWidth);
       const rowIndex = Math.floor(currentBalloonCount / balloonsPerRow);
       const columnIndex = currentBalloonCount % balloonsPerRow;
-
-      const x = columnIndex * balloonWidth;
-      const y = Math.random() * (window.innerHeight * 0.1) + greetingEl.offsetHeight + 60;
-
+  
+      const x = columnIndex * (balloonWidth + 10);
+      const y = rowIndex * (imageEl.offsetHeight + 10) + greetingEl.offsetHeight + 60;
+  
       imageEl.style.left = `${x}px`;
       imageEl.style.top = `${y}px`;
-
+  
       imagesContainer.appendChild(imageEl);
-
+  
       setTimeout(() => {
         imageEl.style.opacity = 1;
         imageEl.style.transform = 'translateY(0)';
       }, 300);
     }
-
+  
     if (currentBalloonCount === 29) {
       greetingBtn.disabled = true;
       greetingBtn.textContent = "You are too fabulous to be any older!";
     }
-  }
+  }  
   
   greetingBtn.addEventListener('click', displayGreeting);
 });
