@@ -87,12 +87,18 @@ document.addEventListener('DOMContentLoaded', function () {
       const greetingHeight = greetingEl.getBoundingClientRect().height;
       const buttonTop = greetingBtn.getBoundingClientRect().top;
       const balloonWidth = 60;
-      const balloonsPerRow = Math.floor(screenWidth / balloonWidth);
+      let balloonsPerRow;
+      const gap = 10;
+      if (screenWidth <= 768) {
+        balloonsPerRow = 3;
+      } else {
+        balloonsPerRow = 6;
+      }
       const rowIndex = Math.floor(currentBalloonCount / balloonsPerRow);
       const columnIndex = currentBalloonCount % balloonsPerRow;
   
-      const x = columnIndex * (balloonWidth + 10);
-      const y = rowIndex * (imageEl.offsetHeight + 10) + greetingEl.offsetHeight + 60;
+      const x = columnIndex * (balloonWidth + gap);
+      const y = rowIndex * (imageEl.offsetHeight + gap) + greetingEl.offsetHeight + 60;
   
       imageEl.style.left = `${x}px`;
       imageEl.style.top = `${y}px`;
@@ -109,7 +115,8 @@ document.addEventListener('DOMContentLoaded', function () {
       greetingBtn.disabled = true;
       greetingBtn.textContent = "You are too fabulous to be any older!";
     }
-  }  
+  }
+  
   
   greetingBtn.addEventListener('click', displayGreeting);
 });
