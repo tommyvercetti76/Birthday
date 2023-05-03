@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
       let balloonsPerRow;
       const gap = 10;
       if (screenWidth <= 768) {
-        balloonsPerRow = 3;
+        balloonsPerRow = 5;
       } else {
         balloonsPerRow = 6;
       }
